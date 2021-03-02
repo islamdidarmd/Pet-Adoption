@@ -39,8 +39,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.ui.data.Pet
-import com.example.androiddevchallenge.ui.data.getDemoPetList
+import com.example.androiddevchallenge.data.Pet
+import com.example.androiddevchallenge.data.getDemoPetList
 import com.example.androiddevchallenge.ui.theme.typography
 import dev.chrisbanes.accompanist.coil.CoilImage
 

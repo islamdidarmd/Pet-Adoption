@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.ui.data.getDemoPetList
+import com.example.androiddevchallenge.data.getDemoPetList
 import com.example.androiddevchallenge.ui.theme.typography
 import dev.chrisbanes.accompanist.coil.CoilImage
 

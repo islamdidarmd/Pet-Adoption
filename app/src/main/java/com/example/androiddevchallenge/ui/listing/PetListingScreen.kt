@@ -45,7 +45,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.ui.data.getDemoPetList
+import com.example.androiddevchallenge.data.getDemoPetList
 import com.example.androiddevchallenge.ui.navigation.Screen
 import com.example.androiddevchallenge.ui.theme.lightGray
 import com.example.androiddevchallenge.ui.theme.typography
