@@ -18,12 +18,16 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.ui.details.PetDetailsScreen
 import com.example.androiddevchallenge.ui.listing.PetListingScreen
+import com.example.androiddevchallenge.ui.navigation.Screen
 import com.example.androiddevchallenge.ui.theme.PetAdoptionTheme
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +43,18 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun PetAdoptionApp() {
-    PetListingScreen()
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = Screen.Home.route) {
+        composable(route = Screen.Home.route) {
+            PetListingScreen(navController)
+        }
+        composable(
+            route = "${Screen.Details.route}/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        ) {
+            PetDetailsScreen(navController, it.arguments?.getInt("id") ?: 0)
+        }
+    }
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)

@@ -1,7 +1,29 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.ui.listing
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -17,25 +39,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
+import com.example.androiddevchallenge.ui.data.Pet
+import com.example.androiddevchallenge.ui.data.getDemoPetList
 import com.example.androiddevchallenge.ui.theme.typography
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-fun PetListingRowItem() {
-    Card(modifier = Modifier
-        .wrapContentHeight()
-        .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
-        .clip(RoundedCornerShape(8.dp))
-        .clickable {
-            //todo on pet click
-        }) {
+fun PetListingRowItem(pet: Pet, onClicked: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .wrapContentHeight()
+            .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .clickable {
+                onClicked()
+            }
+    ) {
         Row(
             modifier = Modifier.padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             CoilImage(
                 fadeIn = true,
-                data = "https://placekitten.com/120/120",
+                data = pet.image,
                 modifier = Modifier
                     .height(110.dp)
                     .width(110.dp)
@@ -45,10 +71,10 @@ fun PetListingRowItem() {
             )
 
             Column(modifier = Modifier.padding(start = 8.dp)) {
-                Text(style = typography.subtitle2, text = "Fatima Elma")
+                Text(style = typography.subtitle2, text = pet.title)
                 Text(
                     style = typography.caption,
-                    text = "Bogurian Cat"
+                    text = pet.center
                 )
 
                 Row(
@@ -63,7 +89,7 @@ fun PetListingRowItem() {
                         tint = androidx.compose.ui.graphics.Color.Blue,
                         contentDescription = "Location"
                     )
-                    Text(style = typography.subtitle1, text = "Dhaka")
+                    Text(style = typography.subtitle1, text = pet.location)
                 }
             }
             Row(
@@ -71,7 +97,7 @@ fun PetListingRowItem() {
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
             ) {
-                Text(fontSize = 14.sp, text = "Visit Home", color = Color.Blue)
+                Text(fontSize = 14.sp, text = "View Map", color = Color.Blue)
             }
         }
     }
@@ -80,5 +106,6 @@ fun PetListingRowItem() {
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun PetListingRowPreview() {
-    PetListingRowItem()
+    PetListingRowItem(getDemoPetList()[0]) {
+    }
 }
