@@ -23,39 +23,37 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.listing.PetListingScreen
+import com.example.androiddevchallenge.ui.theme.PetAdoptionTheme
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyTheme {
-                MyApp()
+            PetAdoptionTheme {
+                PetAdoptionApp()
             }
         }
     }
 }
 
-// Start building your app here!
 @Composable
-fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
-    }
+fun PetAdoptionApp() {
+    PetListingScreen()
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreview() {
-    MyTheme {
-        MyApp()
+    PetAdoptionTheme {
+        PetAdoptionApp()
     }
 }
 
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+/*@Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp()
+    PetAdoptionTheme(darkTheme = true) {
+        PetAdoptionApp()
     }
-}
+}*/
