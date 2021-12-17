@@ -12,7 +12,7 @@ Pet Adoption is an app based on the concept of adopting pets
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
-As a newbie to jetpack compose, I tried to keep the UI as simple and easy to implement as possible. I tool inspiration from some design on uplabs.
+As a newbie to jetpack compose, I tried to keep the UI as simple and easy to implement as possible. I took inspiration from some design on uplabs.
 The dataset is hardcoded.
 
 
